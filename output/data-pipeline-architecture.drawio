@@ -21,7 +21,7 @@
         <mxCell id="run_api" parent="ingest_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_run" value="Cloud Run&#xa;(API Service)" vertex="1">
           <mxGeometry height="50" width="50" x="100" y="50" as="geometry" />
         </mxCell>
-        <mxCell id="pubsub_ingest" parent="ingest_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.pubsub" value="Pub/Sub&#xa;(Ingest Topic)" vertex="1">
+        <mxCell id="pubsub_ingest" parent="ingest_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_pubsub" value="Pub/Sub&#xa;(Ingest Topic)" vertex="1">
           <mxGeometry height="50" width="50" x="100" y="190" as="geometry" />
         </mxCell>
         <mxCell id="process_group" parent="vpc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#757575;strokeWidth=1;dashed=1;dashPattern=5 5;verticalAlign=top;fontSize=11;fontStyle=2;fontColor=#424242;align=center;container=1;collapsible=0;recursiveResize=0;" value="Processing Layer" vertex="1">
@@ -45,37 +45,37 @@
         <mxCell id="cloudsql" parent="storage_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_sql" value="Cloud SQL&#xa;(Metadata)" vertex="1">
           <mxGeometry height="50" width="50" x="60" y="190" as="geometry" />
         </mxCell>
-        <mxCell id="memorystore" parent="storage_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.memorystore" value="Memorystore&#xa;(Cache)" vertex="1">
+        <mxCell id="memorystore" parent="storage_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_memorystore" value="Memorystore&#xa;(Cache)" vertex="1">
           <mxGeometry height="50" width="50" x="260" y="190" as="geometry" />
         </mxCell>
         <mxCell id="ml_group" parent="vpc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#757575;strokeWidth=1;dashed=1;dashPattern=5 5;verticalAlign=top;fontSize=11;fontStyle=2;fontColor=#424242;align=center;container=1;collapsible=0;recursiveResize=0;" value="ML &amp; Intelligence" vertex="1">
           <mxGeometry height="270" width="410" x="650" y="430" as="geometry" />
         </mxCell>
-        <mxCell id="vertexai" parent="ml_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.vertexai" value="Vertex AI&#xa;(Model Serving)" vertex="1">
+        <mxCell id="vertexai" parent="ml_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_machine_learning" value="Vertex AI&#xa;(Model Serving)" vertex="1">
           <mxGeometry height="50" width="50" x="180" y="50" as="geometry" />
         </mxCell>
-        <mxCell id="vision" parent="ml_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.vision_api" value="Vision AI" vertex="1">
+        <mxCell id="vision" parent="ml_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_vision_api" value="Vision AI" vertex="1">
           <mxGeometry height="50" width="50" x="50" y="165" as="geometry" />
         </mxCell>
-        <mxCell id="nlp" parent="ml_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.natural_language_api" value="Natural&#xa;Language AI" vertex="1">
+        <mxCell id="nlp" parent="ml_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_natural_language_api" value="Natural&#xa;Language AI" vertex="1">
           <mxGeometry height="50" width="50" x="310" y="165" as="geometry" />
         </mxCell>
         <mxCell id="obs_group" parent="vpc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#757575;strokeWidth=1;dashed=1;dashPattern=5 5;verticalAlign=top;fontSize=11;fontStyle=2;fontColor=#424242;align=center;container=1;collapsible=0;recursiveResize=0;" value="Observability" vertex="1">
           <mxGeometry height="270" width="560" x="30" y="430" as="geometry" />
         </mxCell>
-        <mxCell id="logging" parent="obs_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_logging" value="Cloud Logging" vertex="1">
+        <mxCell id="logging" parent="obs_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.logging" value="Cloud Logging" vertex="1">
           <mxGeometry height="50" width="50" x="65" y="70" as="geometry" />
         </mxCell>
         <mxCell id="monitoring" parent="obs_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_monitoring" value="Cloud Monitoring" vertex="1">
           <mxGeometry height="50" width="50" x="225" y="70" as="geometry" />
         </mxCell>
-        <mxCell id="trace" parent="obs_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_trace" value="Cloud Trace" vertex="1">
+        <mxCell id="trace" parent="obs_group" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.trace" value="Cloud Trace" vertex="1">
           <mxGeometry height="50" width="50" x="385" y="70" as="geometry" />
         </mxCell>
         <mxCell id="errors" parent="obs_group" style="sketch=0;html=1;fillColor=#EA4335;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.error_reporting" value="Error Reporting" vertex="1">
           <mxGeometry height="50" width="50" x="225" y="180" as="geometry" />
         </mxCell>
-        <mxCell id="apigee" parent="project" style="sketch=0;html=1;fillColor=#FF6D00;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.apigee" value="Apigee" vertex="1">
+        <mxCell id="apigee" parent="project" style="sketch=0;html=1;fillColor=#FF6D00;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.apigee_api_platform" value="Apigee" vertex="1">
           <mxGeometry height="50" width="50" x="75" y="210" as="geometry" />
         </mxCell>
         <mxCell id="scheduler" parent="project" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_scheduler" value="Cloud Scheduler" vertex="1">
