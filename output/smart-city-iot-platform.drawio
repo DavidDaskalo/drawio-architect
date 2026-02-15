@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-01-31T22:00:00.000Z" agent="DrawIO Architect Skill" version="22.0.0" type="device">
+  <diagram name="Smart City IoT Platform" id="smart-city-iot">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- GCP Project Container -->
+        <mxCell id="project" value="&lt;b&gt;Google &lt;/b&gt;Cloud Platform&lt;br&gt;Smart City Platform" style="fillColor=#F6F6F6;strokeColor=none;shadow=0;gradientColor=none;fontSize=14;align=left;spacing=10;fontColor=#717171;verticalAlign=top;spacingTop=-4;fontStyle=0;spacingLeft=40;html=1;whiteSpace=wrap;container=1;collapsible=0;recursiveResize=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="1520" height="920" as="geometry" />
+        </mxCell>
+        <mxCell id="project_logo" value="" style="shape=mxgraph.gcp2.google_cloud_platform;fillColor=#F6F6F6;strokeColor=none;shadow=0;gradientColor=none;" vertex="1" parent="project">
+          <mxGeometry width="23" height="20" relative="1" as="geometry">
+            <mxPoint x="20" y="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- VPC Container -->
+        <mxCell id="vpc" value="VPC - Smart City Network" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;dashed=1;verticalAlign=top;fontSize=12;fontStyle=1;fontColor=#1565C0;align=left;spacingLeft=10;container=1;collapsible=0;recursiveResize=0;" vertex="1" parent="project">
+          <mxGeometry x="60" y="80" width="1400" height="780" as="geometry" />
+        </mxCell>
+
+        <!-- Ingestion Layer -->
+        <mxCell id="ingestion_layer" parent="vpc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#757575;strokeWidth=1;dashed=1;dashPattern=5 5;verticalAlign=top;fontSize=11;fontStyle=2;fontColor=#424242;align=center;container=1;collapsible=0;recursiveResize=0;" value="IoT Data Ingestion" vertex="1">
+          <mxGeometry x="40" y="60" width="380" height="320" as="geometry" />
+        </mxCell>
+
+        <!-- IoT Devices (External) -->
+        <mxCell id="iot_devices" parent="1" style="shape=mxgraph.gcp2.cloud_generic;fillColor=#9E9E9E;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;sketch=0;html=1;" value="IoT Sensors&#xa;(Traffic, Air Quality,&#xa;Parking, Lights)" vertex="1">
+          <mxGeometry x="140" y="180" width="60" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Cloud IoT Core / Pub/Sub -->
+        <mxCell id="pubsub_iot" parent="ingestion_layer" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_pubsub" value="Pub/Sub&#xa;(IoT Events)" vertex="1">
+          <mxGeometry x="165" y="80" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Cloud Functions for validation -->
+        <mxCell id="validator_fn" parent="ingestion_layer" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_functions" value="Cloud Functions&#xa;(Data Validation)" vertex="1">
+          <mxGeometry x="165" y="200" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Processing Layer -->
+        <mxCell id="processing_layer" parent="vpc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#757575;strokeWidth=1;dashed=1;dashPattern=5 5;verticalAlign=top;fontSize=11;fontStyle=2;fontColor=#424242;align=center;container=1;collapsible=0;recursiveResize=0;" value="Real-time Processing" vertex="1">
+          <mxGeometry x="470" y="60" width="400" height="320" as="geometry" />
+        </mxCell>
+
+        <!-- Cloud Run for stream processing -->
+        <mxCell id="stream_processor" parent="processing_layer" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_run" value="Cloud Run&#xa;(Stream Processor)" vertex="1">
+          <mxGeometry x="80" y="80" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Bigtable for time-series data -->
+        <mxCell id="bigtable" parent="processing_layer" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_bigtable" value="Bigtable&#xa;(Time-series)" vertex="1">
+          <mxGeometry x="240" y="80" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Firestore for device state -->
+        <mxCell id="firestore" parent="processing_layer" style="sketch=0;html=1;fillColor=#FFCA28;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_firestore" value="Firestore&#xa;(Device State)" vertex="1">
+          <mxGeometry x="240" y="200" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Analytics & ML Layer -->
+        <mxCell id="analytics_layer" parent="vpc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#757575;strokeWidth=1;dashed=1;dashPattern=5 5;verticalAlign=top;fontSize=11;fontStyle=2;fontColor=#424242;align=center;container=1;collapsible=0;recursiveResize=0;" value="Analytics &amp; Intelligence" vertex="1">
+          <mxGeometry x="920" y="60" width="420" height="320" as="geometry" />
+        </mxCell>
+
+        <!-- BigQuery for analytics -->
+        <mxCell id="bigquery" parent="analytics_layer" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.bigquery" value="BigQuery&#xa;(Analytics)" vertex="1">
+          <mxGeometry x="80" y="80" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Vertex AI for predictions -->
+        <mxCell id="vertex_ai" parent="analytics_layer" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_machine_learning" value="Vertex AI&#xa;(Traffic Prediction)" vertex="1">
+          <mxGeometry x="260" y="80" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Cloud Storage for data lake -->
+        <mxCell id="storage" parent="analytics_layer" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_storage" value="Cloud Storage&#xa;(Data Lake)" vertex="1">
+          <mxGeometry x="170" y="200" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- API Layer -->
+        <mxCell id="api_layer" parent="vpc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#757575;strokeWidth=1;dashed=1;dashPattern=5 5;verticalAlign=top;fontSize=11;fontStyle=2;fontColor=#424242;align=center;container=1;collapsible=0;recursiveResize=0;" value="Public API Layer" vertex="1">
+          <mxGeometry x="40" y="430" width="600" height="280" as="geometry" />
+        </mxCell>
+
+        <!-- Apigee -->
+        <mxCell id="apigee" parent="api_layer" style="sketch=0;html=1;fillColor=#FF6D00;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.apigee_api_platform" value="Apigee&#xa;(API Gateway)" vertex="1">
+          <mxGeometry x="100" y="70" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Cloud Run API services -->
+        <mxCell id="api_service_1" parent="api_layer" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_run" value="Cloud Run&#xa;(Traffic API)" vertex="1">
+          <mxGeometry x="250" y="70" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="api_service_2" parent="api_layer" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_run" value="Cloud Run&#xa;(Parking API)" vertex="1">
+          <mxGeometry x="380" y="70" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Cloud CDN -->
+        <mxCell id="cdn" parent="api_layer" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_cdn" value="Cloud CDN&#xa;(Static Assets)" vertex="1">
+          <mxGeometry x="250" y="180" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Observability Layer -->
+        <mxCell id="observability_layer" parent="vpc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#757575;strokeWidth=1;dashed=1;dashPattern=5 5;verticalAlign=top;fontSize=11;fontStyle=2;fontColor=#424242;align=center;container=1;collapsible=0;recursiveResize=0;" value="Observability &amp; Control" vertex="1">
+          <mxGeometry x="690" y="430" width="650" height="280" as="geometry" />
+        </mxCell>
+
+        <!-- Cloud Monitoring -->
+        <mxCell id="monitoring" parent="observability_layer" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_monitoring" value="Cloud Monitoring" vertex="1">
+          <mxGeometry x="100" y="70" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Cloud Logging -->
+        <mxCell id="logging" parent="observability_layer" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.logging" value="Cloud Logging" vertex="1">
+          <mxGeometry x="270" y="70" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Cloud Trace -->
+        <mxCell id="trace" parent="observability_layer" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.trace" value="Cloud Trace" vertex="1">
+          <mxGeometry x="440" y="70" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Cloud Scheduler for batch jobs -->
+        <mxCell id="scheduler" parent="observability_layer" style="sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_scheduler" value="Cloud Scheduler&#xa;(Batch Jobs)" vertex="1">
+          <mxGeometry x="270" y="180" width="50" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- External Users/Apps -->
+        <mxCell id="external_users" parent="1" style="shape=mxgraph.gcp2.cloud_generic;fillColor=#9E9E9E;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;sketch=0;html=1;" value="City Portal&#xa;&amp; Mobile Apps" vertex="1">
+          <mxGeometry x="140" y="530" width="60" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- CONNECTIONS -->
+
+        <!-- IoT Devices to Pub/Sub -->
+        <mxCell id="conn_iot_pubsub" edge="1" parent="1" source="iot_devices" target="pubsub_iot" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4285F4;strokeWidth=2;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="IoT telemetry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Pub/Sub to Validator -->
+        <mxCell id="conn_pubsub_validator" edge="1" parent="1" source="pubsub_iot" target="validator_fn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="trigger">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Validator to Stream Processor -->
+        <mxCell id="conn_validator_processor" edge="1" parent="1" source="validator_fn" target="stream_processor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="validated data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Stream Processor to Bigtable -->
+        <mxCell id="conn_processor_bigtable" edge="1" parent="1" source="stream_processor" target="bigtable" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="write">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Stream Processor to Firestore -->
+        <mxCell id="conn_processor_firestore" edge="1" parent="1" source="stream_processor" target="firestore" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="update state">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Bigtable to BigQuery (export) -->
+        <mxCell id="conn_bigtable_bq" edge="1" parent="1" source="bigtable" target="bigquery" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="export">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- BigQuery to Storage -->
+        <mxCell id="conn_bq_storage" edge="1" parent="1" source="bigquery" target="storage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;startArrow=classic;startFill=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="archive / load">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- BigQuery to Vertex AI -->
+        <mxCell id="conn_bq_vertex" edge="1" parent="1" source="bigquery" target="vertex_ai" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="training data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Users to Apigee -->
+        <mxCell id="conn_users_apigee" edge="1" parent="1" source="external_users" target="apigee" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4285F4;strokeWidth=2;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="API requests">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Apigee to API Services -->
+        <mxCell id="conn_apigee_api1" edge="1" parent="1" source="apigee" target="api_service_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn_apigee_api2" edge="1" parent="1" source="apigee" target="api_service_2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- API Services to Data Sources -->
+        <mxCell id="conn_api1_bigtable" edge="1" parent="1" source="api_service_1" target="bigtable" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="query">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn_api2_firestore" edge="1" parent="1" source="api_service_2" target="firestore" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="query">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- CDN to Storage -->
+        <mxCell id="conn_cdn_storage" edge="1" parent="1" source="cdn" target="storage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="cache">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Observability connections (consolidated) -->
+        <mxCell id="conn_services_monitoring" edge="1" parent="1" source="stream_processor" target="monitoring" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#34A853;strokeWidth=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="metrics">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="conn_services_logging" edge="1" parent="1" source="api_service_1" target="logging" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#34A853;strokeWidth=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="logs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Scheduler triggers -->
+        <mxCell id="conn_scheduler_bq" edge="1" parent="1" source="scheduler" target="bigquery" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FBBC04;strokeWidth=1;dashed=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;" value="daily aggregation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
