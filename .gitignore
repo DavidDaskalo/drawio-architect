@@ -12,5 +12,8 @@
 .vscode/
 .idea/
 
+# Archive
+.archive/
+
 # Claude Code
 .claude/
