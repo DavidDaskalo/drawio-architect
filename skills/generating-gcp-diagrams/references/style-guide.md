@@ -1,4 +1,4 @@
-# DrawIO Style Guide
+# DrawIO Style Guide (GCP)
 
 ## Style String Format
 
@@ -11,7 +11,7 @@ rounded=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;
 
 | Color | Hex | Use |
 |-------|-----|-----|
-| Google Blue | #4285F4 | Primary icons |
+| Google Blue | #4285F4 | Primary icons (most services) |
 | Google Red | #EA4335 | Errors, alerts |
 | Google Yellow | #FBBC04 | Warnings |
 | Google Green | #34A853 | Success, VPC |
@@ -53,19 +53,31 @@ Places label below the icon.
 sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.{service}
 ```
 
+**Note:** GCP uses `fontColor=#424242` (dark gray) for all service labels. Unlike AWS, GCP has a single icon pattern — no service vs instance icon distinction.
+
 ### VPC-SC Container
 ```
-rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;verticalAlign=top;fontSize=14;fontStyle=1;align=center;container=1;collapsible=0;recursiveResize=0;
+rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=2;dashed=0;verticalAlign=top;fontSize=13;fontStyle=1;fontColor=#2E7D32;align=center;arcSize=5;container=1;collapsible=0;recursiveResize=0;
 ```
 
 ### Dashed Logical Group
 ```
-rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#757575;strokeWidth=1;dashed=1;dashPattern=5 5;verticalAlign=top;fontSize=11;fontStyle=2;align=center;container=1;collapsible=0;recursiveResize=0;
+rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#757575;strokeWidth=1;dashed=1;dashPattern=5 5;verticalAlign=top;fontSize=11;fontStyle=2;fontColor=#424242;align=center;container=1;collapsible=0;recursiveResize=0;
+```
+
+### Solid Logical Group
+```
+rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#9E9E9E;strokeWidth=1;dashed=0;verticalAlign=top;fontSize=11;fontStyle=0;align=center;container=1;collapsible=0;recursiveResize=0;
 ```
 
 ### Solid Arrow Connection
 ```
 edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=classic;endFill=1;
+```
+
+### Labeled Connection (always add label properties)
+```
+edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#333333;strokeWidth=1;endArrow=classic;endFill=1;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#333333;
 ```
 
 ### Bidirectional Arrow
@@ -82,79 +94,23 @@ edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;s
 
 | Container Type | Fill | Stroke |
 |----------------|------|--------|
-| GCP Project | #F1F8E9 | #558B2F |
+| GCP Project | #F6F6F6 | none |
 | VPC-SC | #E8F5E9 | #4CAF50 |
 | Region | #E3F2FD | #1976D2 |
 | Zone | #FFF3E0 | #FF9800 |
 | Subnet | #E8EAF6 | #3F51B5 |
 | Security | #FFEBEE | #F44336 |
 | External | #F3E5F5 | #9C27B0 |
+| Logical (solid) | #FAFAFA | #9E9E9E |
+| Logical (dashed) | none | #757575 |
 
----
+## GCP Label Rules
 
-## AWS Color Palette
-
-### AWS Category Colors
-| Category | Hex | Color Name |
-|----------|-----|-----------|
-| Analytics | #8C4FFF | Purple |
-| Application Integration | #E7157B | Pink |
-| Artificial Intelligence | #01A88D | Teal |
-| Blockchain | #ED7100 | Orange |
-| Business Applications | #DD344C | Red/Pink |
-| Cloud Financial Management | #7AA116 | Green/Olive |
-| Compute | #ED7100 | Orange |
-| Containers | #ED7100 | Orange |
-| Customer Enablement | #C7131F | Magenta/Red |
-| Databases | #C925D1 | Purple |
-| Developer Tools | #C925D1 | Purple |
-| Management & Governance | #E7157B | Pink |
-| Networking | #8C4FFF | Purple |
-| Security & Identity | #DD344C | Red |
-| Serverless | #ED7100 | Orange |
-| Storage | #3F8624 | Green |
-
-### AWS Text & Line Colors
-| Element | Hex | Notes |
-|---------|-----|-------|
-| Font Color | #232F3E | Universal dark gray for all labels |
-| Arrow Stroke | #232F3E | 2pt stroke width |
-| Group Border (neutral) | #879196 | Generic groups |
-
-### AWS Service Icon Style Pattern
-```
-outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor={CATEGORY_COLOR};strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.{SHAPE_NAME}
-```
-**IMPORTANT:** `{SHAPE_NAME}` uses **spaces** not underscores (e.g., `kinesis data streams`, `step functions`, `elastic beanstalk`). Single-word names are unaffected (e.g., `lambda`, `ec2`, `sqs`). Look up exact names in `assets/aws-icons.json` or `.archive/aws4-available-shapes.txt`.
-
-### AWS Arrow Style
-```
-edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=open;endSize=4;
-```
-Open arrow, size 4, orthogonal routing, 2pt stroke.
-
-### AWS Label Rules
-- Font: 12pt, color `#232F3E`
-- Max 2 lines for service labels
-- "AWS" or "Amazon" stays on same line as service name
-- Break after 2nd word if needed
-- Icon size: 64x64 fixed
-
-## AWS Container Colors
-
-| Container Type | Fill | Stroke |
-|----------------|------|--------|
-| AWS Cloud | none | #AAB7B8 |
-| Region | none | #00A4A6 |
-| Availability Zone | none | #00A4A6 (dashed) |
-| VPC | none | #8C4FFF |
-| Public Subnet | #E9F3E6 | #248814 |
-| Private Subnet | #E6F2F8 | #147EBA |
-| Security Group | #F2DEDE | #DD3522 |
-| Auto Scaling | #FFF4E8 | #ED7100 |
-| AWS Account | none | #CD2264 |
-| Corp Datacenter | none | #147EBA |
-| Generic Group | none | #879196 |
+- Service labels: 11pt, `fontColor=#424242`
+- Container labels: 13-14pt, bold (`fontStyle=1`), color varies by container type
+- Connection labels: 10pt, `fontColor=#333333`, always include `labelBackgroundColor=#FFFFFF`
+- Max 2 lines per label; use `&#xa;` for line breaks
+- Icon size: 50x50 fixed (60x60 for emphasis)
 
 ## Special Characters
 
@@ -165,4 +121,4 @@ Use XML entities in `value` attribute:
 - Greater than: `&gt;`
 - Quote: `&quot;`
 
-Example: `value="Google Cloud Platform&#xa;VPC-SC"`
+Example: `value="Cloud Run&#xa;(API Service)"`

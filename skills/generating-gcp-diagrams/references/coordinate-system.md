@@ -229,6 +229,37 @@ Canvas (0,0)
           = (150, 180) absolute
 ```
 
+### Deep Nesting Example (3 Levels)
+
+GCP Project → VPC-SC → Logical Group → Service:
+
+```xml
+<!-- GCP Project at absolute (110, 20) -->
+<mxCell id="gcp_project" parent="1">
+  <mxGeometry x="110" y="20" width="1050" height="710" />
+</mxCell>
+
+<!-- VPC-SC at (20, 55) relative to GCP Project -->
+<!-- Absolute: (110+20, 20+55) = (130, 75) -->
+<mxCell id="vpc_sc" parent="gcp_project">
+  <mxGeometry x="20" y="55" width="820" height="520" />
+</mxCell>
+
+<!-- Logical Group at (15, 35) relative to VPC-SC -->
+<!-- Absolute: (130+15, 75+35) = (145, 110) -->
+<mxCell id="processing_group" parent="vpc_sc">
+  <mxGeometry x="15" y="35" width="200" height="300" />
+</mxCell>
+
+<!-- Service at (75, 50) relative to Logical Group -->
+<!-- Absolute: (145+75, 110+50) = (220, 160) -->
+<mxCell id="dataflow" parent="processing_group">
+  <mxGeometry x="75" y="50" width="50" height="50" />
+</mxCell>
+```
+
+**Key rule:** Each child's (x, y) is relative to its immediate parent. To find absolute position, sum all ancestor positions.
+
 ### Container Content Area
 
 Account for container label when positioning children:
@@ -313,7 +344,23 @@ Values are relative (0-1) to shape dimensions.
 | Letter | 850 | 1100 |
 | A4 | 827 | 1169 |
 | Wide/16:9 | 1600 | 900 |
+| **GCP Standard** | **1200** | **780** |
 | Large | 2000 | 1500 |
+
+### GCP Diagram Template (Critical)
+
+**Always use these exact dimensions for GCP diagrams** — deviations cause tiny/zoomed-out rendering in DrawIO Desktop:
+
+```xml
+<mxGraphModel dx="1434" dy="844" ... pageWidth="1200" pageHeight="780">
+```
+
+GCP Project Zone must be positioned at:
+```
+x="110" y="20" width="1050" height="710"
+```
+
+This template has been empirically verified. See `output/gcp-secure-internet-to-storage.drawio` for the working reference.
 
 ## Alignment Tips
 

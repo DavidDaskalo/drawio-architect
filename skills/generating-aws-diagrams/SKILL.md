@@ -4,13 +4,6 @@ description: Generates DrawIO XML diagrams for Amazon Web Services architectures
 license: MIT
 compatibility: Requires image analysis capability for image conversion. Scripts require Python 3 and Bash. DrawIO Desktop optional for validation.
 allowed-tools: Read Write
-metadata:
-  author: user
-  version: "2.1"
-  provider: aws
-  stencil_library: mxgraph.aws4
-  services: 264
-  validation_rate: "96.6%"
 ---
 
 # AWS DrawIO Diagram Generator
@@ -26,10 +19,26 @@ Generates professional DrawIO XML diagrams for Amazon Web Services architectures
 
 ## Quick Reference
 
-### AWS Shape Pattern
+### AWS Shape Patterns
+
+There are two icon types. Use **service icons** when labeling the AWS service itself, and **instance icons** when representing a specific resource.
+
+**Service icon** (colored square background) — for labeling the service:
 ```
 shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.{shape_name}
 ```
+
+**Instance icon** (bare icon, no background) — for specific resources:
+```
+shape=mxgraph.aws4.{shape_name};fillColor={category_color}
+```
+> **CRITICAL:** Always keep `fillColor` set to the category color. Without it the icon renders white/invisible. The only difference from a service icon is the absence of the `resourceIcon` background square — never remove `fillColor` when using an instance icon.
+
+| Scenario | Icon Type | Label Example |
+|----------|-----------|---------------|
+| The AWS service itself | **Service** (with background) | "AWS Lambda", "Amazon RDS" |
+| A specific resource/instance | **Instance** (no background) | "Order Processor", "Users Table" |
+| Multiple instances of same service | **Instance** (no background) | "ECS Task 1", "ECS Task 2" |
 
 ### CRITICAL: Underscore-Separated Names
 
@@ -47,18 +56,18 @@ The aws4.xml stencil defines names with spaces, but DrawIO's style parser requir
 
 ### Common AWS Services
 
-| Service | Shape Code |
-|---------|-----------|
-| Lambda | `mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda` |
-| Amazon S3 | `mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3` |
-| Amazon EC2 | `mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ec2` |
-| DynamoDB | `mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb` |
-| API Gateway | `mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway` |
-| Amazon SQS | `mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs` |
-| Amazon SNS | `mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns` |
-| Step Functions | `mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions` |
-| Amazon ECS | `mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ecs` |
-| Amazon RDS | `mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.rds` |
+| Service | Service Icon (with background) | Instance Icon (no background) |
+|---------|-------------------------------|-------------------------------|
+| Lambda | `shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda` | `shape=mxgraph.aws4.lambda` |
+| Amazon S3 | `shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3` | `shape=mxgraph.aws4.s3` |
+| Amazon EC2 | `shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ec2` | `shape=mxgraph.aws4.ec2` |
+| DynamoDB | `shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb` | `shape=mxgraph.aws4.dynamodb` |
+| API Gateway | `shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway` | `shape=mxgraph.aws4.api_gateway` |
+| Amazon SQS | `shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs` | `shape=mxgraph.aws4.sqs` |
+| Amazon SNS | `shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns` | `shape=mxgraph.aws4.sns` |
+| Step Functions | `shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.step_functions` | `shape=mxgraph.aws4.step_functions` |
+| Amazon ECS | `shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ecs` | `shape=mxgraph.aws4.ecs` |
+| Amazon RDS | `shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.rds` | `shape=mxgraph.aws4.rds` |
 
 ### AWS Container Types
 
@@ -224,7 +233,8 @@ Use this workflow to generate a new AWS diagram from text specifications.
 2. **Select components** - From libraries:
    - Look up services in `assets/aws-icons.json`
    - Choose containers from `assets/aws-containers.json`
-   - **VERIFY:** Space-separated names for multi-word services
+   - **Choose icon type:** Use **service icons** (with background) for generic service labels, **instance icons** (no background) for specific resources (see Quick Reference)
+   - **VERIFY:** Underscore-separated names for multi-word services in style strings
    - Select connection styles
 
 3. **Plan layout** - Design the arrangement:
@@ -278,7 +288,7 @@ Create an AWS serverless architecture with:
         </mxCell>
         <!-- More shapes... -->
         <!-- Connections -->
-        <mxCell id="conn1" edge="1" source="apigw" target="lambda" style="..." />
+        <mxCell id="conn_api_gateway_to_lambda" edge="1" source="api_gateway" target="lambda" style="..." />
       </root>
     </mxGraphModel>
   </diagram>
@@ -299,7 +309,7 @@ Create an AWS serverless architecture with:
 **Service Coverage:**
 - 264 AWS services across 24 categories
 - 96.6% validated against mxgraph.aws4 library (255/264 services)
-- 9 unvalidated services (deprecated or newer than aws4.xml stencil)
+- 9 unvalidated services (deprecated or newer than aws4.xml stencil) — see `references/ICON-COMPATIBILITY.md` for the list. For these, use a visually similar validated service icon or a generic shape.
 
 ### Key AWS Specifications
 
@@ -308,59 +318,17 @@ Create an AWS serverless architecture with:
 - Fill color varies by **category** (not per-service)
 - Arrow style: open arrow, 2pt stroke, `#232F3E`
 
-### AWS Service Categories
-
-| Category | Color | Example Services |
-|----------|-------|------------------|
-| Analytics | #8C4FFF | Athena, Kinesis, QuickSight, Redshift, Glue |
-| Application Integration | #E7157B | API Gateway, EventBridge, SNS, SQS, Step Functions |
-| Artificial Intelligence | #01A88D | Bedrock, SageMaker, Lex, Polly, Rekognition |
-| Blockchain | #ED7100 | Managed Blockchain |
-| Business Applications | #E7157B | Connect, SES, WorkSpaces, Chime |
-| Cloud Financial Management | #C7131F | Cost Explorer, Budgets |
-| Compute | #ED7100 | EC2, Lambda, Batch, Fargate |
-| Containers | #ED7100 | ECS, EKS, Fargate, ECR |
-| Databases | #C925D1 | RDS, DynamoDB, Aurora, ElastiCache |
-| Developer Tools | #C925D1 | CodeBuild, CodeDeploy, CodePipeline |
-| Internet of Things | #01A88D | IoT Core, IoT Analytics, IoT Greengrass |
-| Management Tools | #E7157B | CloudFormation, CloudWatch, Systems Manager |
-| Networking & Content Delivery | #8C4FFF | Route 53, CloudFront, VPC, Transit Gateway |
-| Security & Identity | #DD344C | IAM, Cognito, KMS, Shield, WAF |
-| Storage | #3F8624 | S3, EBS, EFS, Glacier |
-
-**Full list:** See `assets/aws-icons.json` for all 264 services with exact shape names.
+Look up the exact `category`, `fillColor`, and `full_style` for any service in `assets/aws-icons.json`. All 24 categories with colors are listed there.
 
 ---
 
-## Visual Best Practices (Summary)
+## Visual Best Practices
 
-For detailed visual design guidelines, see [references/DIAGRAM-BEST-PRACTICES.md](references/DIAGRAM-BEST-PRACTICES.md).
+See [references/DIAGRAM-BEST-PRACTICES.md](references/DIAGRAM-BEST-PRACTICES.md) for full guidelines. Key rules:
 
-### Font Colors
-
-- All labels: `fontColor=#232F3E` (universal dark gray)
-- Group labels: match stroke color of the container
-
-### Icon Spacing
-
-- Icon size: **64x64 pixels**
-- Standard spacing: **120px between icons**
-- Container padding: **30-40px**
-
-### Connection Labels
-
-Always add these properties to labeled connections:
-```
-labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#232F3E;
-```
-
-### Connection Best Practices
-
-- Standard width: `strokeWidth=1` for most connections
-- Thick width: `strokeWidth=2` only for primary data paths (use sparingly - max 1-3 per diagram)
-- Orthogonal routing: `edgeStyle=orthogonalEdgeStyle` for professional appearance
-- Arrow style: `endArrow=open;endFill=0;strokeWidth=2;strokeColor=#232F3E`
-- When 3+ connections cross same corridor: consolidate into single connection
+- **Connection labels** — always add: `labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#232F3E;`
+- **strokeWidth** — use `1` for most connections, `2` only for primary data paths (max 1–3 per diagram)
+- **Consolidate** connections when 3+ cross the same corridor into a single labeled edge
 
 ---
 
@@ -391,11 +359,17 @@ For XML parsing and extraction techniques, see [references/xml-parser-guide.md](
 
 ### Icon Not Displaying
 - **CRITICAL:** Verify multi-word shape names use UNDERSCORES: `step_functions`, NOT `step functions`
-- Verify both `shape=mxgraph.aws4.resourceIcon` AND `resIcon=mxgraph.aws4.{name}` are present
-- **NEVER** use `productIcon`/`prIcon` — always use `resourceIcon`/`resIcon`
+- For **service icons**: verify both `shape=mxgraph.aws4.resourceIcon` AND `resIcon=mxgraph.aws4.{name}` are present
+- For **instance icons**: verify `shape=mxgraph.aws4.{name}` is used directly (no `resourceIcon` wrapper)
+- **NEVER** use `productIcon`/`prIcon` — always use `resourceIcon`/`resIcon` for service icons
 - Check [assets/aws-icons.json](assets/aws-icons.json) for exact shape name
 - Ensure `vertex="1"` is present
 - Check that `<mxGeometry>` has valid width/height (64x64)
+
+### Wrong Icon Type (Background vs No Background)
+See the Quick Reference section for the full definition of each icon type. In summary:
+- **Service icon**: `shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.{name}` — labels the AWS service itself
+- **Instance icon**: `shape=mxgraph.aws4.{name};fillColor={category_color}` — represents a specific resource; `fillColor` is required or the icon renders white
 
 ### Connection Not Rendering
 - Verify source and target IDs exist
@@ -438,7 +412,6 @@ Requires DrawIO Desktop. Install on macOS: `brew install drawio`
 | File | Purpose |
 |------|---------|
 | `SKILL.md` | This file - main instructions |
-| `README.md` | AWS quick start guide |
 | **Assets** | |
 | `assets/aws-icons.json` | AWS service icon database (264 services) |
 | `assets/aws-containers.json` | AWS container/group and connection styles |
@@ -446,6 +419,7 @@ Requires DrawIO Desktop. Install on macOS: `brew install drawio`
 | `assets/templates/node-template.xml` | Shape insertion template |
 | `assets/templates/connection-template.xml` | Connection template |
 | **References** | |
+| `references/ICON-COMPATIBILITY.md` | Icon validation reference (255/264 validated) |
 | `references/DIAGRAM-BEST-PRACTICES.md` | Visual design and layout guidelines |
 | `references/xml-parser-guide.md` | Detailed XML parsing reference |
 | `references/xml-examples.md` | Copy-paste XML examples |

@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """
-Fix icon shape names in existing DrawIO files.
+Fix AWS icon shape name references in existing DrawIO files.
+
+Applies a set of known rename mappings (old → new) across one or more .drawio files.
+Backs up each file before modifying it.
 
 Usage:
     python fix-drawio-icons.py [--dry-run] [file1.drawio file2.drawio ...]
 
-If no files specified, fixes all .drawio files in output/ and assets/examples/
+If no files are specified, fixes all .drawio files in output/ and assets/examples/
 """
 
 import sys
@@ -16,22 +19,12 @@ import shutil
 from datetime import datetime
 
 
-# Shape name fixes (old → new)
-SHAPE_FIXES = {
-    'mxgraph.gcp2.pubsub': 'mxgraph.gcp2.cloud_pubsub',
-    'mxgraph.gcp2.memorystore': 'mxgraph.gcp2.cloud_memorystore',
-    'mxgraph.gcp2.filestore': 'mxgraph.gcp2.cloud_filestore',
-    'mxgraph.gcp2.vertexai': 'mxgraph.gcp2.cloud_machine_learning',
-    'mxgraph.gcp2.ai_platform': 'mxgraph.gcp2.cloud_machine_learning',
-    'mxgraph.gcp2.vision_api': 'mxgraph.gcp2.cloud_vision_api',
-    'mxgraph.gcp2.natural_language_api': 'mxgraph.gcp2.cloud_natural_language_api',
-    'mxgraph.gcp2.speech_to_text': 'mxgraph.gcp2.cloud_speech_api',
-    'mxgraph.gcp2.cloud_logging': 'mxgraph.gcp2.logging',
-    'mxgraph.gcp2.cloud_trace': 'mxgraph.gcp2.trace',
-    'mxgraph.gcp2.apigee"': 'mxgraph.gcp2.apigee_api_platform"',  # Note the quote
-    'mxgraph.gcp2.api_gateway': 'mxgraph.gcp2.gateway',
-    'mxgraph.gcp2.google_kubernetes_engine': 'mxgraph.gcp2.container_engine',
-}
+# AWS shape name fixes (old → new).
+# Add entries here when a shape name in an existing .drawio file needs to be updated
+# to match the current aws-icons.json definitions.
+# Example format:
+#   'mxgraph.aws4.old_shape_name': 'mxgraph.aws4.new_shape_name',
+SHAPE_FIXES: dict[str, str] = {}
 
 
 def backup_file(file_path):
@@ -133,8 +126,8 @@ def main():
 
             for old_shape, new_shape, count in result['changes']:
                 # Clean up the shape names for display
-                old_display = old_shape.replace('mxgraph.gcp2.', '').replace('"', '')
-                new_display = new_shape.replace('mxgraph.gcp2.', '').replace('"', '')
+                old_display = old_shape.replace('mxgraph.aws4.', '').replace('"', '')
+                new_display = new_shape.replace('mxgraph.aws4.', '').replace('"', '')
                 print(f"   ✓ {old_display} → {new_display} ({count} occurrence{'s' if count > 1 else ''})")
             print()
 

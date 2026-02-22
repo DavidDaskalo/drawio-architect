@@ -4,13 +4,6 @@ description: Generates DrawIO XML diagrams for Google Cloud Platform architectur
 license: MIT
 compatibility: Requires image analysis capability for image conversion. Scripts require Python 3 and Bash. DrawIO Desktop optional for validation.
 allowed-tools: Read Write
-metadata:
-  author: user
-  version: "2.0"
-  provider: gcp
-  stencil_library: mxgraph.gcp2
-  services: 35
-  validation_rate: "94.3%"
 ---
 
 # GCP DrawIO Diagram Generator
@@ -32,6 +25,8 @@ shape=mxgraph.gcp2.{service_name}
 ```
 
 **Note:** GCP uses **snake_case** for shape names (e.g., `cloud_run`, `cloud_sql`, `cloud_storage`).
+
+**Icon Pattern:** Unlike AWS, GCP uses a **single icon pattern** for all services — there is no service vs instance icon distinction. The same `shape=mxgraph.gcp2.{name}` is used whether labeling the service itself ("Cloud Run") or a specific instance ("Cloud Run (API Handler)"). Differentiate by label text only.
 
 ### Common GCP Services
 
@@ -279,11 +274,11 @@ Create a GCP architecture with:
 4. Or construct style using `shape=mxgraph.gcp2.{shape_name}`
 
 **Service Coverage:**
-- 35 GCP services across 8 categories
-- 94.3% validated (33 exact matches, 2 fallback icons)
-- Categories: compute, database, storage, networking, ai_ml, integration, operations, api_management
+- 46 GCP services across 11 categories
+- 40 exact matches, 6 fallback icons
+- Categories: compute, database, storage, networking, ai_ml, integration, operations, api_management, data_analytics, devops, security
 
-**Note:** Workflows and Eventarc use fallback icons as they're newer services not yet in DrawIO's mxgraph.gcp2 library. See [assets/ICON-COMPATIBILITY.md](assets/ICON-COMPATIBILITY.md) for complete validation details.
+**Note:** 6 services use fallback icons (Workflows, Eventarc, Artifact Registry, Cloud Deploy, Secret Manager, Identity Platform) as they're newer services not yet in DrawIO's mxgraph.gcp2 stencil. See [references/ICON-COMPATIBILITY.md](references/ICON-COMPATIBILITY.md) for complete validation details.
 
 ### GCP Service Categories
 
@@ -292,11 +287,14 @@ Create a GCP architecture with:
 | compute | Cloud Run, Compute Engine, GKE, Cloud Functions, App Engine |
 | database | BigQuery, Cloud SQL, Firestore, Spanner, Bigtable, Memorystore |
 | storage | Cloud Storage, Filestore, Persistent Disk |
-| networking | VPC, Load Balancing, CDN, DNS, Armor |
+| networking | VPC, Load Balancing, CDN, DNS, Armor, Cloud NAT |
 | ai_ml | Vertex AI, AI Platform, Vision, NLP, Speech-to-Text |
 | integration | Pub/Sub, Cloud Tasks, Workflows, Eventarc, Scheduler |
 | operations | Logging, Monitoring, Trace, Error Reporting |
 | api_management | Apigee, API Gateway |
+| data_analytics | Dataflow, Dataproc, Cloud Composer |
+| devops | Cloud Build, Artifact Registry, Container Registry, Cloud Deploy |
+| security | Cloud KMS, Secret Manager, Identity Platform |
 
 ---
 
@@ -360,7 +358,7 @@ For XML parsing and extraction techniques, see [references/xml-parser-guide.md](
 
 ### Icon Not Displaying
 - Verify shape name matches exactly: `mxgraph.gcp2.cloud_run` (underscore, not hyphen)
-- Check [assets/ICON-COMPATIBILITY.md](assets/ICON-COMPATIBILITY.md) for correct shape names
+- Check [references/ICON-COMPATIBILITY.md](references/ICON-COMPATIBILITY.md) for correct shape names
 - Ensure `vertex="1"` is present
 - Check that `<mxGeometry>` has valid width/height (50x50)
 - For Workflows/Eventarc, note these don't have exact icon matches in DrawIO's library
@@ -406,15 +404,14 @@ Requires DrawIO Desktop. Install on macOS: `brew install drawio`
 | File | Purpose |
 |------|---------|
 | `SKILL.md` | This file - main instructions |
-| `README.md` | GCP quick start guide |
 | **Assets** | |
-| `assets/gcp-icons.json` | GCP service icon database (35 services, 94.3% validated) |
-| `assets/ICON-COMPATIBILITY.md` | Icon validation reference |
+| `assets/gcp-icons.json` | GCP service icon database (46 services) |
 | `assets/containers.json` | GCP container and connection styles |
 | `assets/templates/drawio-base.xml` | Base XML template |
 | `assets/templates/node-template.xml` | Shape insertion template |
 | `assets/templates/connection-template.xml` | Connection template |
 | **References** | |
+| `references/ICON-COMPATIBILITY.md` | Icon validation reference |
 | `references/DIAGRAM-BEST-PRACTICES.md` | Visual design and layout guidelines |
 | `references/xml-parser-guide.md` | Detailed XML parsing reference |
 | `references/xml-examples.md` | Copy-paste XML examples |

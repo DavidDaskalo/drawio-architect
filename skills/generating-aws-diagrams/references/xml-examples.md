@@ -29,6 +29,32 @@ Quick-reference examples for constructing DrawIO XML elements with AWS services.
 </mxCell>
 ```
 
+## Adding an AWS Instance Icon (No Background)
+
+Use instance icons when representing a specific resource, not the service itself:
+
+```xml
+<mxCell id="lambda_order_processor" value="Order Processor"
+  style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.lambda"
+  vertex="1" parent="1">
+  <mxGeometry x="100" y="100" width="64" height="64" as="geometry" />
+</mxCell>
+```
+
+**Key difference:** No `resourceIcon` wrapper — the shape name `mxgraph.aws4.lambda` is used directly. **CRITICAL:** Always keep `fillColor` set to the category color, or the icon renders white/invisible.
+
+## Adding an AWS Service (Multi-Line Label)
+
+```xml
+<mxCell id="api_gateway" value="Amazon&#xa;API Gateway"
+  style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway"
+  vertex="1" parent="1">
+  <mxGeometry x="100" y="100" width="64" height="64" as="geometry" />
+</mxCell>
+```
+
+Use `&#xa;` for line breaks. Max 2 lines recommended.
+
 ## Adding a Connection
 
 ```xml
@@ -78,6 +104,24 @@ Quick-reference examples for constructing DrawIO XML elements with AWS services.
   <mxGeometry relative="1" as="geometry" />
 </mxCell>
 ```
+
+## Connection with Waypoints
+
+For custom routing (L-shape, U-shape, avoiding obstacles):
+
+```xml
+<mxCell id="conn_lambda_to_s3" value="store" edge="1" source="lambda" target="s3"
+  style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#232F3E;strokeWidth=2;endArrow=open;endSize=4;labelBackgroundColor=#FFFFFF;fontSize=10;fontColor=#232F3E;">
+  <mxGeometry relative="1" as="geometry">
+    <Array as="points">
+      <mxPoint x="300" y="500" />
+      <mxPoint x="600" y="500" />
+    </Array>
+  </mxGeometry>
+</mxCell>
+```
+
+Add `<mxPoint>` elements for each waypoint. Useful when orthogonal routing creates unwanted overlaps.
 
 ## Complete Small Diagram Example
 

@@ -180,6 +180,43 @@ Account for container label when positioning children:
 
 **Safe content area start:** (20, 50-60)
 
+### Deep Nesting Example (4 Levels)
+
+AWS Cloud → Region → VPC → Subnet → Service:
+
+```xml
+<!-- AWS Cloud at absolute (50, 50) -->
+<mxCell id="aws_cloud" parent="1">
+  <mxGeometry x="50" y="50" width="900" height="700" />
+</mxCell>
+
+<!-- Region at (20, 50) relative to AWS Cloud -->
+<!-- Absolute: (50+20, 50+50) = (70, 100) -->
+<mxCell id="region" parent="aws_cloud">
+  <mxGeometry x="20" y="50" width="860" height="620" />
+</mxCell>
+
+<!-- VPC at (20, 50) relative to Region -->
+<!-- Absolute: (70+20, 100+50) = (90, 150) -->
+<mxCell id="vpc" parent="region">
+  <mxGeometry x="20" y="50" width="820" height="540" />
+</mxCell>
+
+<!-- Private Subnet at (20, 50) relative to VPC -->
+<!-- Absolute: (90+20, 150+50) = (110, 200) -->
+<mxCell id="private_subnet" parent="vpc">
+  <mxGeometry x="20" y="50" width="380" height="460" />
+</mxCell>
+
+<!-- Lambda at (50, 60) relative to Private Subnet -->
+<!-- Absolute: (110+50, 200+60) = (160, 260) -->
+<mxCell id="lambda" parent="private_subnet">
+  <mxGeometry x="50" y="60" width="64" height="64" />
+</mxCell>
+```
+
+**Key rule:** Each child's (x, y) is relative to its immediate parent. To find absolute position, sum all ancestor positions.
+
 ## Canvas Size
 
 ### mxGraphModel Dimensions

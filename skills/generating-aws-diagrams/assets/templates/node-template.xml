@@ -18,11 +18,27 @@
 -->
 
 <!-- ============================================
-     AWS SERVICE ICON (Standard - resourceIcon)
+     AWS SERVICE ICON (with colored square background)
+     Use when labeling the AWS service itself.
+     Example labels: "AWS Lambda", "Amazon S3", "Amazon RDS"
      ============================================ -->
 <mxCell id="{ID}"
   value="{LABEL}"
   style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor={CATEGORY_COLOR};strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.{SHAPE_NAME}"
+  vertex="1"
+  parent="{PARENT}">
+  <mxGeometry x="{X}" y="{Y}" width="64" height="64" as="geometry" />
+</mxCell>
+
+
+<!-- ============================================
+     AWS INSTANCE ICON (bare icon, no background)
+     Use when representing a specific resource/instance.
+     Example labels: "Order Processor", "User Auth", "ECS Task 1"
+     ============================================ -->
+<mxCell id="{ID}"
+  value="{LABEL}"
+  style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor={CATEGORY_COLOR};strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.{SHAPE_NAME}"
   vertex="1"
   parent="{PARENT}">
   <mxGeometry x="{X}" y="{Y}" width="64" height="64" as="geometry" />
@@ -121,4 +137,30 @@
 <!-- Amazon SQS (Application Integration - Pink) -->
 <mxCell id="sqs1" value="Amazon SQS" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs" vertex="1" parent="1">
   <mxGeometry x="284" y="264" width="64" height="64" as="geometry" />
+</mxCell>
+
+
+<!-- ============================================
+     INSTANCE ICONS - Ready to Use (no background)
+     Use these when representing specific resources.
+     ============================================ -->
+
+<!-- Lambda Function Instance (Compute - Orange, no background) -->
+<mxCell id="lambda_order_processor" value="Order&#xa;Processor" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.lambda" vertex="1" parent="1">
+  <mxGeometry x="100" y="428" width="64" height="64" as="geometry" />
+</mxCell>
+
+<!-- EC2 Instance (Compute - Orange, no background) -->
+<mxCell id="ec2_web_server" value="Web Server" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.ec2" vertex="1" parent="1">
+  <mxGeometry x="284" y="428" width="64" height="64" as="geometry" />
+</mxCell>
+
+<!-- DynamoDB Table Instance (Databases - Purple, no background) -->
+<mxCell id="dynamodb_users_table" value="Users Table" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.dynamodb" vertex="1" parent="1">
+  <mxGeometry x="468" y="428" width="64" height="64" as="geometry" />
+</mxCell>
+
+<!-- S3 Bucket Instance (Storage - Green, no background) -->
+<mxCell id="s3_logs_bucket" value="Logs Bucket" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#3F8624;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.s3" vertex="1" parent="1">
+  <mxGeometry x="652" y="428" width="64" height="64" as="geometry" />
 </mxCell>

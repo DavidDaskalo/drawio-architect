@@ -16,7 +16,6 @@ Exit codes:
 
 import sys
 import xml.etree.ElementTree as ET
-import re
 from pathlib import Path
 
 
@@ -65,7 +64,6 @@ class DrawIOValidator:
         self._validate_diagram(root)
         self._validate_cells(root)
         self._validate_connections(root)
-        self._validate_gcp_shapes(root)
 
         return len(self.errors) == 0
 
@@ -155,33 +153,6 @@ class DrawIOValidator:
 
             if target and target not in cell_ids:
                 self.error(f"Edge '{edge_id}' references non-existent target '{target}'")
-
-    def _validate_gcp_shapes(self, root):
-        """Validate GCP shape references."""
-        gcp_pattern = re.compile(r'shape=mxgraph\.gcp2\.(\w+)')
-
-        valid_gcp_shapes = {
-            'cloud_run', 'compute_engine', 'google_kubernetes_engine', 'cloud_functions',
-            'app_engine', 'bigquery', 'cloud_sql', 'cloud_firestore', 'cloud_spanner',
-            'cloud_bigtable', 'memorystore', 'cloud_storage', 'filestore', 'persistent_disk',
-            'virtual_private_cloud', 'cloud_load_balancing', 'cloud_cdn', 'cloud_dns',
-            'cloud_armor', 'vertexai', 'ai_platform', 'vision_api', 'natural_language_api',
-            'speech_to_text', 'pubsub', 'cloud_tasks', 'workflows', 'eventarc',
-            'cloud_scheduler', 'cloud_logging', 'cloud_monitoring', 'cloud_trace',
-            'error_reporting', 'apigee', 'api_gateway'
-        }
-
-        gcp_count = 0
-        for cell in root.iter('mxCell'):
-            style = cell.get('style', '')
-            match = gcp_pattern.search(style)
-            if match:
-                gcp_count += 1
-                shape_name = match.group(1)
-                if shape_name not in valid_gcp_shapes:
-                    self.warn(f"Unrecognized GCP shape: mxgraph.gcp2.{shape_name}")
-
-        self.log(f"Found {gcp_count} GCP service shapes")
 
     def summary(self) -> str:
         """Return validation summary."""

@@ -20,10 +20,20 @@ rounded=1;fillColor=#E9F3E6;strokeColor=#248814;strokeWidth=2;
 | Cloud Financial Management | #7AA116 | Green/Olive |
 | Compute | #ED7100 | Orange |
 | Containers | #ED7100 | Orange |
+| Customer Enablement | #C7131F | Dark Red |
 | Databases | #C925D1 | Purple |
 | Developer Tools | #C925D1 | Purple |
+| End User Computing | #ED7100 | Orange |
+| Front-End Web & Mobile | #DD344C | Red/Pink |
+| Game Tech | #ED7100 | Orange |
+| Internet of Things | #3F8624 | Green |
 | Management & Governance | #E7157B | Pink |
+| Media Services | #ED7100 | Orange |
+| Migration & Transfer | #ED7100 | Orange |
 | Networking | #8C4FFF | Purple |
+| Quantum Technologies | #8C4FFF | Purple |
+| Robotics | #ED7100 | Orange |
+| Satellite | #ED7100 | Orange |
 | Security & Identity | #DD344C | Red |
 | Storage | #3F8624 | Green |
 
@@ -64,13 +74,29 @@ Places label below the icon.
 
 ## Standard Style Strings
 
-### AWS Service Icon
+### AWS Service Icon (with colored square background)
+Use when labeling the AWS service itself (e.g., "AWS Lambda", "Amazon S3").
 ```
 outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor={CATEGORY_COLOR};strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.{SHAPE_NAME}
 ```
+
+### AWS Instance Icon (bare icon, no background)
+Use when representing a specific resource or instance (e.g., "Order Processor", "Users Table", "Web Server").
+```
+outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor={CATEGORY_COLOR};strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.{SHAPE_NAME}
+```
+The only difference: no `resourceIcon` wrapper — the shape name is used directly.
+
+### When to Use Each
+| Scenario | Icon Type | Label Example |
+|----------|-----------|---------------|
+| The AWS service itself | **Service** (with background) | "AWS Lambda", "Amazon RDS" |
+| A specific resource/instance | **Instance** (no background) | "Order Processor", "Users Table" |
+| Multiple instances of same service | **Instance** (no background) | "ECS Task 1", "ECS Task 2" |
+
 **IMPORTANT:** `{SHAPE_NAME}` uses **underscores** for multi-word names (e.g., `kinesis_data_streams`, `step_functions`, `elastic_beanstalk`). Single-word names are unaffected (e.g., `lambda`, `ec2`, `sqs`). Look up exact names in `assets/aws-icons.json`.
 
-**CRITICAL:** Always use `resourceIcon`/`resIcon`, NEVER `productIcon`/`prIcon`.
+**CRITICAL:** For service icons, always use `resourceIcon`/`resIcon`, NEVER `productIcon`/`prIcon`.
 
 ### AWS Arrow Style
 ```

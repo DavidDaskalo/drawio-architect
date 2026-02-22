@@ -197,9 +197,14 @@ When adding explanatory text boxes:
 - Sides: 30-40px
 - Bottom: 30-40px
 
-**Between containers:**
+**Between containers (side by side):**
 - Horizontal spacing: 60-80px
 - Vertical spacing: 40-60px
+
+**Between nested containers (parent → child):**
+- VPC-SC inside GCP Project: 15-20px gap from parent edges
+- Logical Groups inside VPC-SC: 15px gap from VPC-SC edges
+- Example: VPC-SC at x=20 inside GCP Project = 20px left margin
 
 ### Container Labels
 

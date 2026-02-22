@@ -162,7 +162,7 @@ shape=mxgraph.gcp2.cloud_run;fillColor=#4285F4;strokeColor=none;fontSize=11;
 ```
 sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;
 labelPosition=center;verticalLabelPosition=bottom;align=center;
-spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#999999;
+spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;
 shape=mxgraph.gcp2.{service_name}
 ```
 

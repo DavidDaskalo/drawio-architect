@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "provider": "gcp",
     "description": "GCP service icons for DrawIO using built-in mxgraph.gcp2 library",
-    "total_services": 35,
+    "total_services": 46,
     "last_updated": "2026-01-31"
   },
   "services": [
@@ -945,6 +945,311 @@
         "width": 50,
         "height": 50
       }
+    },
+    {
+      "service_name": "Cloud Dataflow",
+      "service_id": "cloud_dataflow",
+      "provider": "gcp",
+      "category": "data_analytics",
+      "visual_signatures": {
+        "icon_description": "Stream/batch data processing pipeline icon",
+        "icon_color": "#4285F4",
+        "background_color": "#FFFFFF",
+        "border_color": "#E0E0E0"
+      },
+      "drawio_shape": {
+        "library": "mxgraph.gcp2",
+        "shape_name": "cloud_dataflow",
+        "full_style": "sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_dataflow"
+      },
+      "recognition_keywords": [
+        "dataflow",
+        "stream processing",
+        "batch processing",
+        "apache beam"
+      ],
+      "default_size": {
+        "width": 50,
+        "height": 50
+      }
+    },
+    {
+      "service_name": "Cloud Dataproc",
+      "service_id": "cloud_dataproc",
+      "provider": "gcp",
+      "category": "data_analytics",
+      "visual_signatures": {
+        "icon_description": "Managed Spark/Hadoop cluster icon",
+        "icon_color": "#4285F4",
+        "background_color": "#FFFFFF",
+        "border_color": "#E0E0E0"
+      },
+      "drawio_shape": {
+        "library": "mxgraph.gcp2",
+        "shape_name": "cloud_dataproc",
+        "full_style": "sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_dataproc"
+      },
+      "recognition_keywords": [
+        "dataproc",
+        "spark",
+        "hadoop",
+        "big data"
+      ],
+      "default_size": {
+        "width": 50,
+        "height": 50
+      }
+    },
+    {
+      "service_name": "Cloud Composer",
+      "service_id": "cloud_composer",
+      "provider": "gcp",
+      "category": "data_analytics",
+      "visual_signatures": {
+        "icon_description": "Managed Apache Airflow icon",
+        "icon_color": "#4285F4",
+        "background_color": "#FFFFFF",
+        "border_color": "#E0E0E0"
+      },
+      "drawio_shape": {
+        "library": "mxgraph.gcp2",
+        "shape_name": "cloud_composer",
+        "full_style": "sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_composer"
+      },
+      "recognition_keywords": [
+        "composer",
+        "airflow",
+        "orchestration",
+        "dag"
+      ],
+      "default_size": {
+        "width": 50,
+        "height": 50
+      }
+    },
+    {
+      "service_name": "Cloud Build",
+      "service_id": "cloud_build",
+      "provider": "gcp",
+      "category": "devops",
+      "visual_signatures": {
+        "icon_description": "CI/CD build service icon",
+        "icon_color": "#4285F4",
+        "background_color": "#FFFFFF",
+        "border_color": "#E0E0E0"
+      },
+      "drawio_shape": {
+        "library": "mxgraph.gcp2",
+        "shape_name": "container_builder",
+        "full_style": "sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.container_builder"
+      },
+      "recognition_keywords": [
+        "cloud build",
+        "ci/cd",
+        "build",
+        "container builder"
+      ],
+      "default_size": {
+        "width": 50,
+        "height": 50
+      }
+    },
+    {
+      "service_name": "Artifact Registry",
+      "service_id": "artifact_registry",
+      "provider": "gcp",
+      "category": "devops",
+      "visual_signatures": {
+        "icon_description": "Container/artifact repository icon",
+        "icon_color": "#4285F4",
+        "background_color": "#FFFFFF",
+        "border_color": "#E0E0E0"
+      },
+      "drawio_shape": {
+        "library": "mxgraph.gcp2",
+        "shape_name": "container_registry",
+        "full_style": "sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.container_registry",
+        "fallback": true,
+        "fallback_reason": "Artifact Registry not in gcp2 stencil; uses Container Registry icon"
+      },
+      "recognition_keywords": [
+        "artifact registry",
+        "docker registry",
+        "container images",
+        "artifacts"
+      ],
+      "default_size": {
+        "width": 50,
+        "height": 50
+      }
+    },
+    {
+      "service_name": "Container Registry",
+      "service_id": "container_registry",
+      "provider": "gcp",
+      "category": "devops",
+      "visual_signatures": {
+        "icon_description": "Container image registry icon",
+        "icon_color": "#4285F4",
+        "background_color": "#FFFFFF",
+        "border_color": "#E0E0E0"
+      },
+      "drawio_shape": {
+        "library": "mxgraph.gcp2",
+        "shape_name": "container_registry",
+        "full_style": "sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.container_registry"
+      },
+      "recognition_keywords": [
+        "container registry",
+        "gcr",
+        "docker",
+        "container images"
+      ],
+      "default_size": {
+        "width": 50,
+        "height": 50
+      }
+    },
+    {
+      "service_name": "Cloud Deploy",
+      "service_id": "cloud_deploy",
+      "provider": "gcp",
+      "category": "devops",
+      "visual_signatures": {
+        "icon_description": "Continuous delivery service icon",
+        "icon_color": "#4285F4",
+        "background_color": "#FFFFFF",
+        "border_color": "#E0E0E0"
+      },
+      "drawio_shape": {
+        "library": "mxgraph.gcp2",
+        "shape_name": "container_builder",
+        "full_style": "sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.container_builder",
+        "fallback": true,
+        "fallback_reason": "Cloud Deploy not in gcp2 stencil; uses Cloud Build (container_builder) icon"
+      },
+      "recognition_keywords": [
+        "cloud deploy",
+        "continuous delivery",
+        "deployment pipeline",
+        "cd"
+      ],
+      "default_size": {
+        "width": 50,
+        "height": 50
+      }
+    },
+    {
+      "service_name": "Cloud KMS",
+      "service_id": "cloud_kms",
+      "provider": "gcp",
+      "category": "security",
+      "visual_signatures": {
+        "icon_description": "Key management service icon with key symbol",
+        "icon_color": "#4285F4",
+        "background_color": "#FFFFFF",
+        "border_color": "#E0E0E0"
+      },
+      "drawio_shape": {
+        "library": "mxgraph.gcp2",
+        "shape_name": "key_management_service",
+        "full_style": "sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.key_management_service"
+      },
+      "recognition_keywords": [
+        "kms",
+        "key management",
+        "encryption keys",
+        "cmek"
+      ],
+      "default_size": {
+        "width": 50,
+        "height": 50
+      }
+    },
+    {
+      "service_name": "Secret Manager",
+      "service_id": "secret_manager",
+      "provider": "gcp",
+      "category": "security",
+      "visual_signatures": {
+        "icon_description": "Secrets management icon",
+        "icon_color": "#4285F4",
+        "background_color": "#FFFFFF",
+        "border_color": "#E0E0E0"
+      },
+      "drawio_shape": {
+        "library": "mxgraph.gcp2",
+        "shape_name": "key_management_service",
+        "full_style": "sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.key_management_service",
+        "fallback": true,
+        "fallback_reason": "Secret Manager not in gcp2 stencil; uses KMS icon"
+      },
+      "recognition_keywords": [
+        "secret manager",
+        "secrets",
+        "credentials",
+        "api keys"
+      ],
+      "default_size": {
+        "width": 50,
+        "height": 50
+      }
+    },
+    {
+      "service_name": "Identity Platform",
+      "service_id": "identity_platform",
+      "provider": "gcp",
+      "category": "security",
+      "visual_signatures": {
+        "icon_description": "Authentication and identity management icon",
+        "icon_color": "#4285F4",
+        "background_color": "#FFFFFF",
+        "border_color": "#E0E0E0"
+      },
+      "drawio_shape": {
+        "library": "mxgraph.gcp2",
+        "shape_name": "gateway",
+        "full_style": "sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.gateway",
+        "fallback": true,
+        "fallback_reason": "Identity Platform not in gcp2 stencil; uses API Gateway icon"
+      },
+      "recognition_keywords": [
+        "identity platform",
+        "authentication",
+        "firebase auth",
+        "identity"
+      ],
+      "default_size": {
+        "width": 50,
+        "height": 50
+      }
+    },
+    {
+      "service_name": "Cloud NAT",
+      "service_id": "cloud_nat",
+      "provider": "gcp",
+      "category": "networking",
+      "visual_signatures": {
+        "icon_description": "Network address translation icon",
+        "icon_color": "#4285F4",
+        "background_color": "#FFFFFF",
+        "border_color": "#E0E0E0"
+      },
+      "drawio_shape": {
+        "library": "mxgraph.gcp2",
+        "shape_name": "cloud_nat",
+        "full_style": "sketch=0;html=1;fillColor=#4285F4;strokeColor=none;verticalAlign=top;labelPosition=center;verticalLabelPosition=bottom;align=center;spacingTop=-6;fontSize=11;fontStyle=0;fontColor=#424242;shape=mxgraph.gcp2.cloud_nat"
+      },
+      "recognition_keywords": [
+        "cloud nat",
+        "nat",
+        "network address translation",
+        "egress"
+      ],
+      "default_size": {
+        "width": 50,
+        "height": 50
+      }
     }
   ],
   "categories": {
@@ -988,7 +1293,8 @@
         "cloud_load_balancing",
         "cloud_cdn",
         "cloud_dns",
-        "cloud_armor"
+        "cloud_armor",
+        "cloud_nat"
       ]
     },
     "ai_ml": {
@@ -1029,6 +1335,34 @@
       "services": [
         "apigee",
         "api_gateway"
+      ]
+    },
+    "data_analytics": {
+      "name": "Data & Analytics",
+      "color": "#4285F4",
+      "services": [
+        "cloud_dataflow",
+        "cloud_dataproc",
+        "cloud_composer"
+      ]
+    },
+    "devops": {
+      "name": "DevOps & CI/CD",
+      "color": "#4285F4",
+      "services": [
+        "cloud_build",
+        "artifact_registry",
+        "container_registry",
+        "cloud_deploy"
+      ]
+    },
+    "security": {
+      "name": "Security",
+      "color": "#4285F4",
+      "services": [
+        "cloud_kms",
+        "secret_manager",
+        "identity_platform"
       ]
     }
   }
