@@ -9,14 +9,14 @@
   4. Adjust pageWidth/pageHeight as needed
 
   Standard page sizes:
+  - GCP Standard (use this): 1200 x 780  ← REQUIRED for correct rendering in DrawIO Desktop
   - Letter: 850 x 1100
   - A4: 827 x 1169
   - Wide: 1600 x 900
-  - Custom: any values
 -->
 <mxfile host="app.diagrams.net" modified="{TIMESTAMP}" agent="DrawIO Architect Skill" version="22.0.0" type="device">
   <diagram name="Architecture" id="architecture-diagram">
-    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="780" math="0" shadow="0">
       <root>
         <!-- Required base cells - do not remove -->
         <mxCell id="0" />
