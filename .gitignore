@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# DrawIO temp/backup files
+.$*.bkp
+.$*.dtmp
+
+# Build artifacts
+*.zip
+
+# IDE
+.vscode/
+.idea/
+
+# Archive
+.archive/
+
+# Claude Code
+.claude/
+
+# Output folder
+output/
