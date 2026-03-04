@@ -1,57 +1,111 @@
 # DrawIO Architect
 
-An Agent Skill for creating cloud architecture diagrams as DrawIO XML. Supports **GCP** and **AWS** via provider-specific skills. Designed for AI agents (compliant with the [Agent Skills](https://agentskills.io) specification).
+Agent Skills for generating cloud architecture diagrams as DrawIO XML. Supports **AWS** and **GCP** via provider-specific skills.
 
-## Skills
+Built for AI coding agents. Compatible with the [Agent Skills](https://agentskills.io) open specification.
 
-| Skill | Provider | Services | Validation |
-|-------|----------|----------|------------|
-| `generating-gcp-diagrams` | Google Cloud Platform | 35 (8 categories) | 94.3% |
-| `generating-aws-diagrams` | Amazon Web Services | 112 (10 categories) | 100% |
+## Available Skills
 
-Each skill is fully self-contained with its own SKILL.md, icon database, templates, scripts, and references.
+| Skill | Provider | Services | Icon Validation |
+|-------|----------|----------|-----------------|
+| [`generating-aws-diagrams`](skills/generating-aws-diagrams/) | Amazon Web Services | 264 across 24 categories | 96.6% (255/264) |
+| [`generating-gcp-diagrams`](skills/generating-gcp-diagrams/) | Google Cloud Platform | 46 across 11 categories | 87% (40/46) |
 
-## Project Structure
+Each skill is fully self-contained with its own SKILL.md, icon database, templates, and reference docs.
 
-```
-drawio-architect/
-├── .claude/skills/
-│   ├── generating-gcp-diagrams/   # GCP skill (self-contained)
-│   │   ├── SKILL.md               # Skill instructions
-│   │   ├── README.md              # Skill documentation
-│   │   ├── assets/                # gcp-icons.json, containers.json, templates/
-│   │   ├── references/            # Style guide, coordinate system, XML docs
-│   │   └── scripts/               # validate, fix, export, analyze
-│   └── generating-aws-diagrams/   # AWS skill (self-contained)
-│       ├── SKILL.md               # Skill instructions
-│       ├── README.md              # Skill documentation
-│       ├── assets/                # aws-icons.json, aws-containers.json, templates/
-│       ├── references/            # Style guide, coordinate system, XML docs
-│       └── scripts/               # validate, fix, export, analyze
-├── .archive/                      # Deprecated files (gitignored)
-├── .gitignore
-└── README.md
-```
+---
+
+## Install: generating-aws-diagrams
+
+**GitHub:** `https://github.com/DavidDaskalo/drawio-architect`
+
+### 1. Choose Installation Scope
+
+- **Project-level** — skill is available only in the current project
+- **Global** — skill is available across all projects for your agent
+
+### 2. Determine Your Install Path
+
+**Mac / Linux:**
+
+| Agent | Project Path | Global Path |
+|-------|-------------|-------------|
+| Claude | `.claude/skills/` | `~/.claude/skills/` |
+| Cursor | `.cursor/skills/` | `~/.cursor/skills/` |
+| Codex | `.codex/skills/` | `~/.codex/skills/` |
+| Antigravity | `.agent/skills/` | `~/.gemini/antigravity/global_skills/` |
+| Windsurf | `.windsurf/skills/` | `~/.codeium/windsurf/skills/` |
+| Cline | `.cline/skills/` | `~/.cline/skills/` |
+
+**Windows:** Replace `~/` with `%USERPROFILE%\`
+
+### 3. Download
+
+Download the `skills/generating-aws-diagrams/` folder from this repo into your chosen install path.
+
+**Important:**
+- Must download to a subfolder named `generating-aws-diagrams`
+- Correct structure: `{install_path}/generating-aws-diagrams/SKILL.md`
+- Auto-create the directory if it doesn't exist
+
+### 4. Verify
+
+Confirm that `{install_path}/generating-aws-diagrams/SKILL.md` exists.
+
+---
+
+## Install: generating-gcp-diagrams
+
+**GitHub:** `https://github.com/DavidDaskalo/drawio-architect`
+
+### 1. Choose Installation Scope
+
+- **Project-level** — skill is available only in the current project
+- **Global** — skill is available across all projects for your agent
+
+### 2. Determine Your Install Path
+
+**Mac / Linux:**
+
+| Agent | Project Path | Global Path |
+|-------|-------------|-------------|
+| Claude | `.claude/skills/` | `~/.claude/skills/` |
+| Cursor | `.cursor/skills/` | `~/.cursor/skills/` |
+| Codex | `.codex/skills/` | `~/.codex/skills/` |
+| Antigravity | `.agent/skills/` | `~/.gemini/antigravity/global_skills/` |
+| Windsurf | `.windsurf/skills/` | `~/.codeium/windsurf/skills/` |
+| Cline | `.cline/skills/` | `~/.cline/skills/` |
+
+**Windows:** Replace `~/` with `%USERPROFILE%\`
+
+### 3. Download
+
+Download the `skills/generating-gcp-diagrams/` folder from this repo into your chosen install path.
+
+**Important:**
+- Must download to a subfolder named `generating-gcp-diagrams`
+- Correct structure: `{install_path}/generating-gcp-diagrams/SKILL.md`
+- Auto-create the directory if it doesn't exist
+
+### 4. Verify
+
+Confirm that `{install_path}/generating-gcp-diagrams/SKILL.md` exists.
+
+---
 
 ## Usage
 
-Both skills are automatically discovered when this repo is cloned and used with a Claude Code-compatible agent. Invoke with:
+Once installed, invoke by asking your agent:
 
-- **GCP**: Ask the agent to generate a GCP architecture diagram
-- **AWS**: Ask the agent to generate an AWS architecture diagram
+- **AWS**: "Generate an AWS architecture diagram for a serverless API with Lambda, API Gateway, and DynamoDB"
+- **GCP**: "Create a GCP architecture diagram with Cloud Run, Pub/Sub, and BigQuery"
+
+The agent will generate a `.drawio` XML file you can open in [DrawIO Desktop](https://www.drawio.com/) or the web editor.
 
 ## Requirements
 
-- Python 3 (for validation/fix scripts)
+- Python 3 (for validation scripts)
 - DrawIO Desktop (optional, for export/preview) — `brew install drawio`
-
-## Roadmap
-
-- [x] GCP architecture diagrams (mxgraph.gcp2)
-- [x] AWS Part 1: 112 services across 10 categories (mxgraph.aws4)
-- [ ] AWS Part 2: ~16 remaining categories (Databases, Networking, Security, Storage, etc.)
-- [ ] Azure architecture diagrams
-- [ ] Multi-cloud and hybrid diagrams
 
 ## License
 
